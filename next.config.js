@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+// const { withSentryConfig } = require('@sentry/nextjs')
+// if (!options.isServer) {
+//   config.resolve.alias['@sentry/node'] = '@sentry/browser'
+// }
+// const nextConfig = {
+//   reactStrictMode: true,
+// }
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  images: {
+    domains: ['daturians.mypinata.cloud'],
+  },
+}
