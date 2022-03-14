@@ -1,23 +1,21 @@
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Web3Modal from 'web3modal'
+// import Web3Modal from 'web3modal'
 import Link from "next/link"
-import Image from "next/image"
-import { Box, Container, Text, Wrap, WrapItem } from "@chakra-ui/react"
+// import Image from "next/image"
+// import { Box, Container, Text, Wrap, WrapItem } from "@chakra-ui/react"
 
 import {
   nftcontractaddress
 } from '../config'
 
 import DaturiansNFT from '../artifacts/Daturians.json'
-// import { network } from 'hardhat'
-// import { network } from 'hardhat'
 
 export default function Home() {
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
-  const node_url = "https://mainnet.infura.io/v3/0470019fdf234b2cad2f660b9070bb45"
+  // const node_url = "https://mainnet.infura.io/v3/0470019fdf234b2cad2f660b9070bb45"
   const ipfs_gateway = "https://daturians.mypinata.cloud/ipfs/"
   useEffect(() => {
     loadNFTs()
@@ -72,22 +70,7 @@ export default function Home() {
     setNfts(items)
     setLoadingState('loaded') 
   }
-  async function buyNft(nft) {
-    /* needs the user to sign the transaction, so will use Web3Provider and sign it */
-    const web3Modal = new Web3Modal()
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-    const signer = provider.getSigner()
-    const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, signer)
 
-    /* user will be prompted to pay the asking proces to complete the transaction */
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')   
-    const transaction = await contract.createMarketSale(nft.tokenId, {
-      value: price
-    })
-    await transaction.wait()
-    loadNFTs()
-  }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   return (
     <div className="flex justify-center">
