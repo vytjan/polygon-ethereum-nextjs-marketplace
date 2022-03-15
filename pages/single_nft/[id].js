@@ -1,20 +1,15 @@
+import DaturiansNFT from '../../artifacts/Daturians.json';
+import { ethers } from 'ethers';
+import { nftcontractaddress } from '../../config'
 import { getMetadataById } from "../../lib/api";
-// import {
-//   Box,
-//   Divider,
-//   Center,
-//   Text,
-//   Flex,
-//   Spacer,
-//   Button,
-// } from "@chakra-ui/react";
-// import Image from "next/image";
-// import Head from "next/head";
-// import Link from "next/link";
-// import { InfoIcon, AtSignIcon } from "@chakra-ui/icons";
 
 export async function getServerSideProps({ params }) {
-    const meta = await getMetadataById(params.id);
+
+    const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/")
+    // const provider = new ethers.providers.JsonRpcProvider(node_url)
+    const contract = new ethers.Contract(nftcontractaddress, DaturiansNFT.abi, provider)
+
+    const meta = await getMetadataById(params.id, contract);
     return {
       props: {
         meta,

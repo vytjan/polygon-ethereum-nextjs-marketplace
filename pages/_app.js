@@ -1,12 +1,10 @@
 /* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
-import { CookiesProvider } from "react-cookie"
 
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <CookiesProvider>
       <nav className="border-b p-6">
         <p className="text-4xl font-bold">Daturians Gallery</p>
         <div className="flex mt-4">
@@ -23,7 +21,6 @@ function MyApp({ Component, pageProps }) {
         </div>
       </nav>
         <Component {...pageProps} />
-      </CookiesProvider>
     </div>
   )
 }
