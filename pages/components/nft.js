@@ -37,10 +37,7 @@ const NFT = ({ values, scrollPosition }) => {
         <a>
         {nftIcon}
             <div className="p-4">
-            <p style={{ height: '64px' }} className="text-2xl font-semibold">{values.name}</p>
-            <div style={{ height: '70px', overflow: 'hidden' }}>
-                <p className="text-gray-400">{values.description}</p>
-            </div>
+            <p style={{ height: '35px' }} className="text-2xl font-semibold">{values.name}</p>
             </div>
         </a>
         </Link>
