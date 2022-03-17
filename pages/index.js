@@ -5,13 +5,16 @@ import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import { nftcontractaddress } from '../config'
 import DaturiansNFT from '../artifacts/Daturians.json'
-import { getMetadataById } from "../lib/api";
+import { getMetadataById, getQueryMetadata } from "../lib/api";
 
 import NFT from './components/nft';
+import SearchBox from './components/search';
 
 // export default function Home({scrollPosition}) {
 const Home = ({scrollPosition}) => {
+  const [totalNfts, setTotalNfts] = useState([])
   const [nfts, setNfts] = useState([])
+  const [query, setQuery] = useState("");
   const [loadingState, setLoadingState] = useState('not-loaded')
   const ipfs_gateway = "https://daturians.mypinata.cloud/ipfs/"
 
@@ -26,10 +29,7 @@ const Home = ({scrollPosition}) => {
     const contract = new ethers.Contract(nftcontractaddress, DaturiansNFT.abi, provider)
     // get minted number
     const minted = await contract.totalMinted.call();
-    // console.log(minted.toNumber());
-    // const data = await contract.walletOfOwner("0x55d9fc8d5f84cf151d9578c6713a0c0ec35e0e5f")
     const data = Array.from({length: minted}, (x, i) => i+1);
-    // console.log(data);
 
     /*
     *  map over items returned from smart contract and format 
@@ -38,7 +38,6 @@ const Home = ({scrollPosition}) => {
     const ipfsUrl = 'https://daturians.mypinata.cloud/ipfs/QmWeRSySd3RJ9BhoRHzpDsu8PjjNnGYhWwHn44BKDpgvJG/'
     const items = await Promise.all(data.map(async i => {
   
-      // let item = await getMetadataById(i, contract);
       const currentUrl = ipfsUrl+String(i)+'.json';
       const meta = await axios.get(currentUrl)
       let imgUri = meta.data.image.replace("ipfs://", ipfs_gateway)
@@ -51,17 +50,30 @@ const Home = ({scrollPosition}) => {
 
       return item
     }))
-
+    // console.log(items[13])
+    setTotalNfts(items)
     setNfts(items)
     setLoadingState('loaded') 
   }
 
+<<<<<<< HEAD
   // if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   if (!nfts.length) return (<h1 className="px-20 py-10 text-3xl">Loading Daturians NFT</h1>)
 
+=======
+  const handleSubmit = async (e) => {
+    await e.preventDefault();
+    const res = getQueryMetadata(query, totalNfts);
+    setNfts(res);
+  }
+
+  if (!totalNfts.length) return (<h1 className="px-20 py-10 text-3xl">Loading Daturians NFT</h1>)
+  // if (!nfts.length) return (<h1 className="px-20 py-10 text-3xl">No Daturians match your search</h1>)
+>>>>>>> 062e073b4eca96132b21cf39e2c543531f7bb940
   return (
     <div className="flex justify-center">
       <div className="px-4" style={{ maxWidth: '1600px' }}>
+      <SearchBox handleSubmit={handleSubmit} query={query} setQuery={setQuery} />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
             {nfts.map((nft) => (
                 <NFT key={nft.tokenId} scrollPosition={scrollPosition} values={nft} />

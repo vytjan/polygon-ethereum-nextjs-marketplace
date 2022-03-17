@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import axios from 'axios'
-import Link from "next/link"
-import { getMetadataById } from "../lib/api";
+// import Link from "next/link"
+// import { getMetadataById } from "../lib/api";
 // import { useRouter } from 'next/router'
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 
