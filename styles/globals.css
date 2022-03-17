@@ -3,3 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+.family-description {
+	background-color: theme('colors.orange.300');
+}

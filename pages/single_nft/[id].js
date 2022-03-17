@@ -54,7 +54,7 @@ export default function Nft({meta}) {
                         {meta.data.extras.map((item, i) => (
                         <div
                         key={item.trait_type} 
-                        className="border shadow rounded-xl overflow-hidden">
+                        className={"border shadow rounded-xl overflow-hidden" + item.className}>
                                 <div className="p-4" >
                                     <p className="text-2xl font-semibold">{item.trait_type}</p>
                                     <div>
