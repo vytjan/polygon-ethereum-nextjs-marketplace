@@ -32,8 +32,8 @@ export default function Nft({meta}) {
                 {/* extras */}
                 {meta.data.extras.map((item, i) => (
                 <div
-                key={item.trait_type} 
-                className="border shadow rounded-xl overflow-hidden">
+                key={item.trait_type}
+                className={"border shadow rounded-xl overflow-hidden "+item.className}>
                         <div className="p-4" >
                             <p className="text-2xl font-semibold">{item.trait_type}</p>
                             <div>
@@ -46,7 +46,7 @@ export default function Nft({meta}) {
                 <div className="border shadow rounded-xl overflow-hidden">
                     <p className="text-2xl font-semibold">Attributes</p>
                     {meta.data.attributes.map((item, i) => (
-                        <div className="p-4" 
+                        <div className={"p-4 "+item.className} 
                         key={item.trait_type}>
                             <p className="text-2l font-semibold">{item.trait_type}</p>
                             <div>
