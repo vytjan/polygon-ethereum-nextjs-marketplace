@@ -10,6 +10,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['daturians.mypinata.cloud'],
+    domains: ['daturians.mypinata.cloud', 'daturians.com'],
   },
 }

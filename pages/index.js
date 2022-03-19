@@ -5,10 +5,10 @@ import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import { nftcontractaddress } from '../config'
 import DaturiansNFT from '../artifacts/Daturians.json'
-import { getMetadataById, getQueryMetadata } from "../lib/api";
+import { getMetadataById, getQueryMetadata } from "./api/api";
 
-import NFT from './components/nft';
-import SearchBox from './components/search';
+import NFT from '../components/nft';
+import SearchBox from '../components/search';
 
 // export default function Home({scrollPosition}) {
 const Home = ({scrollPosition}) => {

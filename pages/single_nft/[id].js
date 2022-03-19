@@ -1,23 +1,33 @@
 import DaturiansNFT from '../../artifacts/Daturians.json';
 import { ethers } from 'ethers';
 import { nftcontractaddress } from '../../config'
-import { getMetadataById } from "../../lib/api";
+import { getMetadataById } from "../api/api";
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-export async function getServerSideProps({ params }) {
 
-    const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/")
-    // const provider = new ethers.providers.JsonRpcProvider(node_url)
-    const contract = new ethers.Contract(nftcontractaddress, DaturiansNFT.abi, provider)
+const Nft = ({}) => {
+    const router = useRouter()
+    const { id } = router.query
+    // console.log(id)
+    // const [currId, setId] = useState(null)
+    const [meta, setMeta] = useState([])
 
-    const meta = await getMetadataById(params.id, contract);
-    return {
-      props: {
-        meta,
-      },
+    async function getId() {
+
+        const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/")
+        // const provider = new ethers.providers.JsonRpcProvider(node_url)
+        const contract = new ethers.Contract(nftcontractaddress, DaturiansNFT.abi, provider)
+
+        const meta = await getMetadataById(String(id), contract);
+        setMeta(meta);
     };
-  }
 
-export default function Nft({meta}) {
+    useEffect(() => {
+        getId();
+      }, [])
+
+    if (meta.length < 1) return (<h1 className="px-20 py-10 text-2l font-semibold text-center">Loading Daturian</h1>)
     return (
         <div className="flex justify-center">
         <div className="px-1" style={{ maxWidth: '1600px' }}>
@@ -168,4 +178,6 @@ export default function Nft({meta}) {
         </div>
       </div>
     )
-  }
+  };
+
+export default Nft;

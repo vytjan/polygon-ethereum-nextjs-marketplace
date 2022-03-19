@@ -11,11 +11,11 @@ import Web3Modal from 'web3modal'
 
 import { nftcontractaddress } from '../config'
 import DaturiansNFT from '../artifacts/Daturians.json'
-import NFT from './components/nft'
+import NFT from '../components/nft'
 
 
 // export default function LoadNFTs(cookieData) {
-const myNFT = ({scrollPosition}) => {
+const MyNFT = ({scrollPosition}) => {
     const [nfts, setNfts] = useState([])
     const [address, setAddress] = useState('')
     const [loadingState, setLoadingState] = useState('not-loaded')
@@ -124,4 +124,4 @@ const myNFT = ({scrollPosition}) => {
     )
   }
 
-export default trackWindowScroll(myNFT)
+export default trackWindowScroll(MyNFT)

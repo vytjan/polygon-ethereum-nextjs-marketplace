@@ -3,7 +3,7 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 import Link from "next/link";
 
 
-const getSingleNFT = function(imgUri, tokenId, scrollPosition) {
+const getSingleNFT = (imgUri, tokenId, scrollPosition) => {
   if (!imgUri) {
     return null;
   }
@@ -20,14 +20,9 @@ const getSingleNFT = function(imgUri, tokenId, scrollPosition) {
   );
 };
 
-/**
- * NFT component
- * renders the data about a single NFT
- * @param {object} param - props
- * @param {object} param.values
- * @return {object} NFt component
- */
+
 const NFT = ({ values, scrollPosition }) => {
+  // console.log(value);
   const nftIcon = getSingleNFT(values.image,
     values.tokenId, scrollPosition);
 
@@ -44,23 +39,5 @@ const NFT = ({ values, scrollPosition }) => {
     </div>
   );
 };
-
-// City.propTypes = {
-//   values: PropTypes.shape({
-//     LocalizedName: PropTypes.string.isRequired,
-//     Temperature: PropTypes.shape({
-//       Imperial: PropTypes.shape({
-//         Unit: PropTypes.string.isRequired,
-//         Value: PropTypes.number.isRequired
-//       }).isRrequired,
-//       Metric: PropTypes.shape({
-//         Unit: PropTypes.string.isRequired,
-//         Value: PropTypes.number.isRequired
-//       }).isRrequired
-//     }).isRequired,
-//     WeatherText: PropTypes.string.isRequired,
-//     WeatherIcon: PropTypes.number
-//   }).isRequired
-// };
 
 export default NFT;
