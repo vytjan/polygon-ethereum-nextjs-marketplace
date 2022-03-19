@@ -13,7 +13,7 @@ import {
 const SearchBox = ({query, setQuery, handleSubmit }) => {
   
     return (
-        <form onSubmit={handleSubmit} className="max-w-xs">
+        <form onSubmit={handleSubmit} className="search rounded">
         <InputGroup pb="1rem">
             <Input
             placeholder="Search for Daturian ID"

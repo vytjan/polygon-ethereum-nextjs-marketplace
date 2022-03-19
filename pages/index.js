@@ -45,6 +45,7 @@ const Home = ({scrollPosition}) => {
         tokenId: i,
         image: imgUri,
         name: meta.data.name,
+        description: meta.data.description,
         data: meta.data
       }
 
@@ -56,20 +57,14 @@ const Home = ({scrollPosition}) => {
     setLoadingState('loaded') 
   }
 
-<<<<<<< HEAD
-  // if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
-  if (!nfts.length) return (<h1 className="px-20 py-10 text-3xl">Loading Daturians NFT</h1>)
-
-=======
   const handleSubmit = async (e) => {
     await e.preventDefault();
     const res = getQueryMetadata(query, totalNfts);
     setNfts(res);
   }
 
-  if (!totalNfts.length) return (<h1 className="px-20 py-10 text-3xl">Loading Daturians NFT</h1>)
+  if (!totalNfts.length) return (<h1 className="px-20 py-10 text-2l font-semibold text-center">Loading Daturians NFT</h1>)
   // if (!nfts.length) return (<h1 className="px-20 py-10 text-3xl">No Daturians match your search</h1>)
->>>>>>> 062e073b4eca96132b21cf39e2c543531f7bb940
   return (
     <div className="flex justify-center">
       <div className="px-4" style={{ maxWidth: '1600px' }}>

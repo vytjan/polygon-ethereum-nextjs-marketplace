@@ -4,16 +4,88 @@
 @tailwind utilities;
 @tailwind variants;
 
-<<<<<<< HEAD
-.family-description {
-	background-color: theme('colors.orange.300');
+@layer base {
+  html {
+    font-family: Trispace, system-ui, sans-serif;
+    background-color: #F9F9F9;
+  }
 }
-=======
 
-.family-description {
-    background-color: theme('colors.orange.300');
-    border-radius: theme('borderRadius.lg');
-    padding: theme('spacing.6');
-    box-shadow: theme('boxShadow.xl');
+img {
+	height: 100%;
 }
->>>>>>> 062e073b4eca96132b21cf39e2c543531f7bb940
+
+p, h1 {
+	color: #000072;
+}
+
+input {
+	width: 100%;
+	background-color: #E4EFF9;
+	border-radius: 2rem;
+	padding: 15px;
+	margin-right: 20px;
+}
+
+.bg-pink {
+	background-color: #FF4360;
+}
+
+.text-pink {
+	color: #FF4360;
+}
+
+.heart {
+	margin-left: 90%;
+	color: #FF4360;
+}
+
+.heart svg {
+	stroke: #ffffff;
+	stroke-width: 3px;
+}
+
+.content {
+	background-color: #E4EFF9;
+	display: flex;
+}
+
+.two-columns {
+	display: flex;
+	align-items: center;
+}
+
+.attribute-title {
+	width: 25%;
+	float: left;
+}
+
+.attribute-description {
+	width: 75%;
+	float: right;
+}
+
+.flower-attribute-title {
+	width: 25%;
+	float: right;
+}
+
+.flower-attribute-description {
+	width: 75%;
+	float: left;
+}
+
+.logo {
+	width: 180px;
+	margin-top: 15px;
+}
+
+.menu {
+	text-align: right;
+	width:100%;
+}
+
+.chakra-button {
+	background-color: #F9F9F9 !important;
+	color: #000072 !important;
+}

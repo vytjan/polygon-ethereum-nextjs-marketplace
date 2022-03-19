@@ -32,12 +32,12 @@ const NFT = ({ values, scrollPosition }) => {
     values.tokenId, scrollPosition);
 
   return (
-    <div className="border shadow rounded-xl overflow-hidden">
+    <div className="content rounded-xl overflow-hidden">
       <Link href={`/single_nft/${values.tokenId}`}>
         <a>
         {nftIcon}
             <div className="p-4">
-            <p style={{ height: '35px' }} className="text-2xl font-semibold">{values.name}</p>
+            <p style={{ height: '35px' }} className="text-base font-semibold">{values.name}</p>
             </div>
         </a>
         </Link>
