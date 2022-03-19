@@ -26,7 +26,7 @@ export default function Nft({meta}) {
                 {/* image */}
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4 pt-4">
                     <div className="rounded-xl overflow-hidden">
-                        <img class="object-cover content-center"
+                        <img className="object-cover content-center"
                             src={meta.image}
                             alt={meta.image}
                             />
